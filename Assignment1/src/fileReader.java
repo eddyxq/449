@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class fileReader 
 {
-	public ArrayList<Integer> read_FCFS_input()
+	public ArrayList<Integer> readInput(String fileName)
 	{
 		ArrayList<Integer> list = new ArrayList<Integer>();
 				
-		File file = new File("inputFCFS.txt");
+		File file = new File(fileName);
 		
 		Scanner sc;
 		try 
