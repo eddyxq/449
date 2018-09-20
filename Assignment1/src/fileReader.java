@@ -7,25 +7,40 @@ public class fileReader
 {
 	public ArrayList<Integer> readInput(String fileName)
 	{
-		ArrayList<Integer> list = new ArrayList<Integer>();
-				
+		ArrayList<Integer> input = new ArrayList<Integer>();
 		File file = new File(fileName);
-		
-		Scanner sc;
+		Scanner sc = null;
+
 		try 
 		{
-			sc = new Scanner(file);
-			while(sc.hasNextLine())
+			if (fileName == "inputPrioritySch.txt")
 			{
-				int i = sc.nextInt();
-				list.add(i);
-			}		
-			sc.close();
-		} 
+				sc = new Scanner(file);
+				//skips the first line of text
+				sc.nextLine();
+				while(sc.hasNextLine())
+				{
+					String str = sc.nextLine();
+					String[] line = str.split(" ");
+					input.add(Integer.parseInt(line[0]));
+					input.add(Integer.parseInt(line[1]));
+				}		
+			}
+			else
+			{
+				sc = new Scanner(file);
+				while(sc.hasNextLine())
+				{
+					int i = sc.nextInt();
+					input.add(i);
+				}		
+			}
+		}
 		catch (FileNotFoundException e) 
 		{
 			System.out.println("File not found");
 		}
-		return list;
+	
+		return input;
 	}
 }

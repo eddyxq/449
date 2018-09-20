@@ -17,11 +17,4 @@ public class SJF extends CPUSchedulingAlgorithm
 			count += 1;
 		}
 	}
-
-	@Override
-	public void calculateAvgTime() 
-	{
-		double averageWaitTime = totalTime/count;
-		System.out.println(averageWaitTime);
-	}
 }

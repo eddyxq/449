@@ -10,5 +10,8 @@ public class Main
 		SJF ques2 = new SJF();
 		ques2.solve();
 		
+		System.out.println("Question3:");
+		PS ques3 = new PS();
+		ques3.solve();
 	}
 }
