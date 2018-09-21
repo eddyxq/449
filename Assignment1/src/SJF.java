@@ -1,3 +1,9 @@
+/**
+ * This class contains the shortest job first algorithm
+ * @author Eddy Qiang - CPSC 449 - Tutorial T03
+ * @version 1.2
+ * @since September 20, 2018
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 

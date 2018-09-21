@@ -1,3 +1,9 @@
+/**
+ * This class reads input from text files
+ * @author Eddy Qiang - CPSC 449 - Tutorial T03
+ * @version 1.2
+ * @since September 20, 2018
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

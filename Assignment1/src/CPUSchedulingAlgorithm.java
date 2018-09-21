@@ -1,3 +1,9 @@
+/**
+ * This class contains the methods for a CPU scheduling algorithms
+ * @author Eddy Qiang - CPSC 449 - Tutorial T03
+ * @version 1.2
+ * @since September 20, 2018
+ */
 public abstract class CPUSchedulingAlgorithm 
 {
 	int runningTime = 0;
