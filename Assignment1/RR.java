@@ -62,11 +62,7 @@ public class RR
 					}
 				}
 			}
-			//checks if we are done
-			if (anotherCheckNeeded == false)
-			{
-				allProcessFinished = true;
-			}
+				allProcessFinished = !anotherCheckNeeded;
 		}
 		
 		for (int i = 0 ; i < waitTime.length; i++)
