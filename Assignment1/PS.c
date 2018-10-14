@@ -1,24 +1,21 @@
 /**
  * This class contains the first priority scheduling algorithm
  * @author Eddy Qiang - CPSC 449 - Tutorial T03
- * @version 1.0
- * @since September 26, 2018
+ * @version 1.1
+ * @since October 14, 2018
  */
 #include <stdio.h>
 #include <stdlib.h>
 
 int main()
 {
-	char text1[100];
-	char text2[100];
-	char inputFileName[100];
-	char outputFileName[100];
-	char char_b[100];
-	char char_p[100];
-	int burstTime[100];
-	int priority[100];
-	int arr[100];
-	int PS_output[100];
+	int s = 20;
+	char *text1 = (char*)malloc(s*sizeof(char));
+	char *text2 = (char*)malloc(s*sizeof(char));
+	char *inputFileName = (char*)malloc(s*sizeof(char));
+	char *outputFileName = (char*)malloc(s*sizeof(char));
+	char *char_b = (char*)malloc(s*sizeof(char));
+	char *char_p = (char*)malloc(s*sizeof(char));
 	int n;
 	int temp;
 	int num;
@@ -27,6 +24,10 @@ int main()
 	//prompt for number of processes
 	printf("Enter the number of processes: \n");
 	scanf("%d", &num);
+	int *burstTime = (int*)malloc(num*sizeof(int));
+	int *priority = (int*)malloc(num*sizeof(int));
+	int *arr = (int*)malloc(num*sizeof(int));
+	int *PS_output = (int*)malloc(num*sizeof(int));
 	//prompt for input file name
 	printf("Enter the input file name: \n");
 	scanf("%s", inputFileName);
@@ -36,9 +37,11 @@ int main()
 	//open file for reading
     FILE *input;
     input = fopen(inputFileName, "r");
-
+    free(inputFileName);
     fscanf(input, "%s", text1);
     fscanf(input, "%s", text2);
+    free(text1);
+    free(text2);
 
     for(int x = 0; x < num; x++)
 	{
@@ -78,6 +81,7 @@ int main()
 		totalTime += PS_output[i];
 	}
 	FILE *output = fopen(outputFileName, "w");
+	free(outputFileName);
 	//write wait times
 	for(int i=0;i<num;i++)
 	{
@@ -86,6 +90,11 @@ int main()
 	averageWaitTime = totalTime/num;
 	//write average time
 	fprintf(output, "%f\n", averageWaitTime);
-
+	free(char_b);
+	free(char_p);
+	free(burstTime);
+	free(priority);
+	free(arr);
+	free(PS_output);
 	return 0;
 }

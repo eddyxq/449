@@ -1,18 +1,18 @@
 /**
  * This class contains the round robin algorithm
  * @author Eddy Qiang - CPSC 449 - Tutorial T03
- * @version 1.0
- * @since September 26, 2018
+ * @version 1.1
+ * @since October 14, 2018
  */
 #include <stdio.h>
 #include <stdlib.h>
 
 int main()
 {
-	char inputFileName[100];
-	char outputFileName[100];
+	int s = 20;
+	char *inputFileName = (char*)malloc(s*sizeof(char));
+	char *outputFileName = (char*)malloc(s*sizeof(char));
 	int num;
-	int RR_input[1000];
 	int runningTime = 0;
 	int count = 0;
 	float totalTime = 0;
@@ -20,17 +20,19 @@ int main()
 	//prompt for number of processes
 	printf("Enter the number of processes: \n");
 	scanf("%d", &num);
+	int *RR_input = (int*)malloc(num*sizeof(int));
 	//prompt for input file name
 	printf("Enter the input file name: \n");
 	scanf("%s", inputFileName);
 	//prompt for output file name
 	printf("Enter the output file name: \n");
 	scanf("%s", outputFileName);
-	int waitTime[num];
-	int remainingTime[num];
+	int *waitTime = (int*)malloc(num*sizeof(int));
+	int *remainingTime = (int*)malloc(num*sizeof(int));
 	//open file for reading
     FILE *input;
     input = fopen(inputFileName, "r");
+    free(inputFileName);
     //read file contents into array
     //store first line as quantum time
     fscanf(input, "%d", &quantumTime);
@@ -75,6 +77,7 @@ int main()
     }
     //open file for writing
     FILE *output = fopen(outputFileName, "w");
+    free(outputFileName);
     for (int i = 0 ; i < num; i++)
     {
     	totalTime += waitTime[i];
@@ -82,6 +85,9 @@ int main()
     	//write wait times
     	fprintf(output, "%d\n", waitTime[i]);
     }
+    free(waitTime);
+    free(remainingTime);
+    free(RR_input);
     float averageWaitTime = totalTime/count;
     //write average time
     fprintf(output, "%f\n", averageWaitTime);
